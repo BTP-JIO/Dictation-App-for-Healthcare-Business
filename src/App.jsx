@@ -1,27 +1,22 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  Route,
-} from "react-router-dom";
+import React from "react";
 import Dictate from "./pages/Dictate";
-import User, { userLoader } from "./pages/User";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
 import Progress from "./pages/Progress";
 import Soap from "./pages/Soap";
-import RootLayout from "./layouts/RootLayout";
 
-function App() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}>
-        <Route path="/user" element={<User />} loader={userLoader} />
-        <Route index element={<Dictate />} />
+const App = () => {
+  return (
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Dictate />} />
         <Route path="/progress" element={<Progress />} />
         <Route path="/soap" element={<Soap />} />
-      </Route>
-    )
+        {/* <Route path="/about" element={<About />} /> */}
+      </Routes>
+    </>
   );
-  return <RouterProvider router={router}></RouterProvider>;
-}
+};
 
 export default App;
